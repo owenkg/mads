@@ -16,18 +16,12 @@ export function HomePage() {
       {/* Hero */}
       <section className="relative pt-32 pb-24 px-6 overflow-hidden">
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
-          {/* Half-sun hero */}
-          <div className="flex justify-center mb-12">
-            <div className="relative w-32 h-16 overflow-hidden">
-              <div className="absolute bottom-0 w-32 h-32 rounded-full border-4 border-[#C4712A]" />
-              {['-60', '-30', '0', '30', '60'].map((deg, i) => (
-                <div
-                  key={i}
-                  className="absolute bottom-0 left-1/2 origin-bottom w-px h-40 bg-[#D4B88A]"
-                  style={{ transform: `translateX(-50%) rotate(${deg}deg)` }}
-                />
-              ))}
-            </div>
+          <div className="flex justify-center mb-8">
+            <img
+              src="/mads_logo.webp"
+              alt="Meridian at Dusk Sessions"
+              className="w-72 md:w-96 h-auto"
+            />
           </div>
 
           <div className="mb-4">

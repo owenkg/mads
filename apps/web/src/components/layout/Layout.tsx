@@ -39,7 +39,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="container mx-auto px-6 max-w-6xl flex items-center justify-between py-4">
           <Link to="/">
             <img
-              src="/MADS Clean.png"
+              src="/mads_logo.webp"
               alt="Meridian at Dusk Sessions"
               className="h-10 w-auto"
             />
@@ -73,7 +73,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="container mx-auto px-6">
           <div className="inline-block bg-[#F2E0C0] px-6 py-3 mb-8">
             <img
-              src="/MADS Clean.png"
+              src="/mads_logo.webp"
               alt="Meridian at Dusk Sessions"
               className="h-16 w-auto"
             />
