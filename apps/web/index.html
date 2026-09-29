@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Meridian at Dusk Sessions — An intimate music experience in Kampala" />
+    <title>Meridian at Dusk Sessions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet" />
+    <!-- Restore path after GitHub Pages 404 redirect -->
+    <script>
+      (function (l) {
+        if (l.search[1] === '/') {
+          var parts = l.search.slice(1).split('&');
+          var path = parts[0].replace(/~and~/g, '&');
+          var query = parts[1] ? '?' + parts[1].replace(/~and~/g, '&') : '';
+          window.history.replaceState(null, null, l.pathname + path + query + l.hash);
+        }
+      }(window.location));
+    </script>
+  </head>
+  <body>
+    <!-- Hidden form so Netlify's build bot detects it in the static HTML -->
+    <form name="rsvp" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="rsvp" />
+      <input type="hidden" name="event-id" />
+      <input type="hidden" name="event-title" />
+      <input type="hidden" name="event-rsvp-deadline" />
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="email" />
+      <input name="phone" />
+      <input name="instagram" />
+      <input name="howDidYouHear" />
+      <textarea name="musicNote"></textarea>
+      <input type="checkbox" name="recordingConsent" />
+    </form>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
