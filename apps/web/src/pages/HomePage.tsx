@@ -18,7 +18,7 @@ export function HomePage() {
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
           <div className="flex justify-center mb-8">
             <img
-              src="/mads_logo.webp"
+              src={`${import.meta.env.BASE_URL}mads_logo.webp`}
               alt="Meridian at Dusk Sessions"
               className="w-72 md:w-96 h-auto"
             />
