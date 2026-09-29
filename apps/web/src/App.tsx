@@ -5,6 +5,7 @@ import { HomePage } from '@/pages/HomePage';
 import { EventDetailPage } from '@/pages/EventDetailPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { AdminPage } from '@/pages/AdminPage';
+import { DJProfilePage } from '@/pages/DJProfilePage';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/sessions/:id" element={<EventDetailPage />} />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/artists/:id" element={<DJProfilePage />} />
               </Routes>
             </Layout>
           }

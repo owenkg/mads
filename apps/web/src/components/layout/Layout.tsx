@@ -37,14 +37,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       {/* Top nav */}
       <header className="sticky top-0 z-40 bg-[#F2E0C0]/90 backdrop-blur-md border-b border-[#3D1F0A]/10">
         <div className="container mx-auto px-6 max-w-6xl flex items-center justify-between py-4">
-          <Link to="/" className="flex items-center gap-3">
-            {/* Half-sun mark */}
-            <div className="w-8 h-4 overflow-hidden relative">
-              <div className="absolute bottom-0 w-8 h-8 rounded-full border-2 border-[#C4712A]" />
-            </div>
-            <span className="font-mono text-xs tracking-[0.2em] uppercase text-[#1A0C04]">
-              MADS
-            </span>
+          <Link to="/">
+            <img
+              src="/MADS Clean.png"
+              alt="Meridian at Dusk Sessions"
+              className="h-10 w-auto"
+            />
           </Link>
 
           <nav>
@@ -73,19 +71,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
       <footer className="bg-[#1A0C04] text-[#D4B88A] py-16 text-center mt-24 border-t-4 border-[#C4712A]">
         <div className="container mx-auto px-6">
-          {/* Vinyl dot */}
-          <div className="w-12 h-12 mx-auto rounded-full bg-[#C4712A] flex items-center justify-center mb-8">
-            <div className="w-3 h-3 rounded-full bg-[#1A0C04]" />
+          <div className="inline-block bg-[#F2E0C0] px-6 py-3 mb-8">
+            <img
+              src="/MADS Clean.png"
+              alt="Meridian at Dusk Sessions"
+              className="h-16 w-auto"
+            />
           </div>
-          <p className="font-mono tracking-widest uppercase text-xs mb-3 text-[#E09A50]">
-            Meridian at Dusk Sessions
-          </p>
           <p className="font-serif italic text-xl text-[#F2E0C0] mb-8">
             The hour between light and music.
           </p>
           <div className="flex justify-center gap-6 font-mono text-xs tracking-widest uppercase text-[#8A6040]">
             <a
-              href="https://instagram.com/meridianatdusk"
+              href="https://www.instagram.com/meridianatdusk/"
               target="_blank"
               rel="noreferrer"
               className="hover:text-[#F2E0C0] transition-colors"

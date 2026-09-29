@@ -21,8 +21,12 @@ const platformConfig = {
 };
 
 function getYouTubeEmbedUrl(url: string) {
-  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
-  return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+  // Playlist
+  const playlist = url.match(/[?&]list=([^&\s]+)/);
+  if (playlist) return `https://www.youtube.com/embed/videoseries?list=${playlist[1]}`;
+  // Single video
+  const video = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+  return video ? `https://www.youtube.com/embed/${video[1]}` : null;
 }
 
 function getMixcloudEmbedUrl(url: string) {

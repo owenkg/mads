@@ -8,6 +8,7 @@ export type MixLink = {
 
 export type DJSet = {
   dj: string;
+  artistId?: string; // links to djProfiles in artists.ts
   genre: string;
   duration?: string;
   mixLinks: MixLink[];
@@ -52,13 +53,19 @@ export const events: Event[] = [
     djSets: [
       {
         dj: 'Owen KG',
+        artistId: 'owen-kg',
         genre: 'Deep House · Afro House',
         duration: '3h 00m',
         mixLinks: [
           {
+            platform: 'youtube',
+            url: 'https://www.youtube.com/playlist?list=PLJIjtStQzwaZ0G5PGgdhBkJkKmA7HkLSw',
+            label: 'Session 001 — Full Sets',
+          },
+          {
             platform: 'mixcloud',
-            url: 'https://www.mixcloud.com/',
-            label: 'Full Set — Mixcloud',
+            url: 'https://www.mixcloud.com/owenkg/',
+            label: 'Mixcloud Profile',
           },
         ],
       },

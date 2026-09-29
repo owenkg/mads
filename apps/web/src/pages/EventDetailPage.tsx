@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, Clock, MapPin, Music, Users, ArrowLeft } from 'lucide-react';
+import { Calendar, Clock, MapPin, Music, Users, ArrowLeft, ExternalLink } from 'lucide-react';
 import { getEventById } from '@/data/events';
 import { formatDate } from '@/lib/utils';
 import { MixEmbed } from '@/components/events/MixEmbed';
@@ -109,7 +109,17 @@ export function EventDetailPage() {
                   <div key={i} className="mb-10">
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <p className="font-serif italic text-xl text-[#1A0C04]">{set.dj}</p>
+                        {set.artistId ? (
+                          <Link
+                            to={`/artists/${set.artistId}`}
+                            className="font-serif italic text-xl text-[#1A0C04] hover:text-[#C4412A] transition-colors inline-flex items-center gap-2"
+                          >
+                            {set.dj}
+                            <ExternalLink size={14} className="text-[#8A6040]" />
+                          </Link>
+                        ) : (
+                          <p className="font-serif italic text-xl text-[#1A0C04]">{set.dj}</p>
+                        )}
                         <p className="font-mono text-xs text-[#8A6040]">
                           {set.genre}
                           {set.duration && ` · ${set.duration}`}
