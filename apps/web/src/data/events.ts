@@ -12,6 +12,7 @@ export type DJSet = {
   genre: string;
   duration?: string;
   mixLinks: MixLink[];
+  setlist?: string[];
 };
 
 export type Event = {
@@ -67,6 +68,20 @@ export const events: Event[] = [
             url: 'https://www.mixcloud.com/owenkg/',
             label: 'Mixcloud Profile',
           },
+        ],
+        setlist: [
+          'Enoo Napa — Spirits of Our Ancestors',
+          'Da Capo — Indigo Child (feat. Toshi)',
+          'Black Coffee — Superman (feat. Bucie)',
+          'Themba — Waterfall',
+          'Cuebur — Favourite Colour (feat. Felicia Paste)',
+          'Murumba Pitch — Angisafuni ft Nhlanhla Dube',
+          'Blxckie — B4Now',
+          'Msaki — Cosy (Bantu Elements Remix)',
+          'Sun-EL Musician — Akanamali (feat. Samthing Soweto)',
+          'De Mogul SA — Sgudi Snyc',
+          'Major League DJz — Ayepyep (feat. Focalistic)',
+          'Kabza De Small — Sponono (feat. Wizkid)',
         ],
       },
     ],

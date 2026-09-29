@@ -6,6 +6,10 @@ import { formatDate } from '@/lib/utils';
 import { MixEmbed } from '@/components/events/MixEmbed';
 import { RSVPForm } from '@/components/events/RSVPForm';
 import { EventGallery } from '@/components/events/EventGallery';
+import { Countdown } from '@/components/events/Countdown';
+import { AddToCalendar } from '@/components/events/AddToCalendar';
+import { Setlist } from '@/components/events/Setlist';
+import { NotifyForm } from '@/components/events/NotifyForm';
 
 export function EventDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -131,6 +135,9 @@ export function EventDetailPage() {
                       {set.mixLinks.map((link, j) => (
                         <MixEmbed key={j} mixLink={link} />
                       ))}
+                      {set.setlist && set.setlist.length > 0 && (
+                        <Setlist tracks={set.setlist} />
+                      )}
                     </div>
                   </div>
                 ))}
@@ -164,14 +171,7 @@ export function EventDetailPage() {
                 {event.rsvpOpen ? (
                   <RSVPForm event={event} />
                 ) : (
-                  <div className="text-center py-12 border border-[#3D1F0A]/15">
-                    <p className="font-serif italic text-xl text-[#8A6040]">
-                      RSVP is currently closed.
-                    </p>
-                    <p className="font-mono text-xs text-[#8A6040] mt-2">
-                      Follow us on Instagram for updates.
-                    </p>
-                  </div>
+                  <NotifyForm event={event} />
                 )}
               </div>
             )}
@@ -231,6 +231,17 @@ export function EventDetailPage() {
                   </div>
                 )}
               </div>
+
+              {!isPast && (
+                <>
+                  <div className="border-t border-[#3D1F0A]/10 pt-4">
+                    <Countdown date={event.date} />
+                  </div>
+                  <div className="border-t border-[#3D1F0A]/10 pt-4">
+                    <AddToCalendar event={event} />
+                  </div>
+                </>
+              )}
 
               {/* Dress code / policy snippets for upcoming */}
               {!isPast && (
