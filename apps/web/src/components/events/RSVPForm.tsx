@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Event } from '@/data/events';
-import { formatDate } from '@/lib/utils';
+import { formatDate, sanitizeText } from '@/lib/utils';
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -46,10 +46,10 @@ export function RSVPForm({ event }: { event: Event }) {
           'event-id': event.id,
           'event-title': event.title,
           'event-rsvp-deadline': event.rsvpDeadline ?? '',
-          name: data.name,
-          email: data.email,
+          name: sanitizeText(data.name),
+          email: sanitizeText(data.email),
           howDidYouHear: data.howDidYouHear,
-          musicNote: data.musicNote,
+          musicNote: sanitizeText(data.musicNote),
           recordingConsent: data.recordingConsent ? 'yes' : 'no',
         }),
       });
@@ -78,9 +78,7 @@ export function RSVPForm({ event }: { event: Event }) {
             {event.rsvpDeadline ? formatDate(event.rsvpDeadline) : 'a week before the event'}.
           </p>
         </div>
-        <p className="font-mono text-xs text-[#8A6040]">
-          Questions? hello@meridianatdusk.com
-        </p>
+        {/* Questions? hello@meridianatdusk.com — domain acquisition in progress */}
       </div>
     );
   }
@@ -92,11 +90,8 @@ export function RSVPForm({ event }: { event: Event }) {
           Submission Failed
         </p>
         <p className="font-sans text-[#3D1F0A]">
-          Something went wrong. Please try again or email us at{' '}
-          <a href="mailto:hello@meridianatdusk.com" className="underline">
-            hello@meridianatdusk.com
-          </a>
-          .
+          Something went wrong. Please try again or reach us via Instagram.
+          {/* hello@meridianatdusk.com — domain acquisition in progress */}
         </p>
         <button
           onClick={() => setFormState('idle')}
@@ -119,6 +114,7 @@ export function RSVPForm({ event }: { event: Event }) {
           required
           type="text"
           placeholder="Your name"
+          maxLength={100}
           value={data.name}
           onChange={(e) => update('name', e.target.value)}
           className="w-full border border-[#3D1F0A]/20 bg-transparent px-4 py-3 font-sans text-[#1A0C04] placeholder-[#8A6040]/50 focus:outline-none focus:border-[#C4712A] transition-colors"
@@ -134,6 +130,7 @@ export function RSVPForm({ event }: { event: Event }) {
           required
           type="email"
           placeholder="you@example.com"
+          maxLength={254}
           value={data.email}
           onChange={(e) => update('email', e.target.value)}
           className="w-full border border-[#3D1F0A]/20 bg-transparent px-4 py-3 font-sans text-[#1A0C04] placeholder-[#8A6040]/50 focus:outline-none focus:border-[#C4712A] transition-colors"
@@ -166,11 +163,17 @@ export function RSVPForm({ event }: { event: Event }) {
         </label>
         <textarea
           placeholder="Share a track, artist, or feeling..."
+          maxLength={500}
           value={data.musicNote}
           onChange={(e) => update('musicNote', e.target.value)}
           rows={3}
           className="w-full border border-[#3D1F0A]/20 bg-transparent px-4 py-3 font-sans text-[#1A0C04] placeholder-[#8A6040]/50 focus:outline-none focus:border-[#C4712A] transition-colors resize-none"
         />
+        {data.musicNote.length > 400 && (
+          <p className="font-mono text-xs text-[#8A6040] text-right mt-1">
+            {500 - data.musicNote.length} chars left
+          </p>
+        )}
       </div>
 
       {/* Recording consent */}

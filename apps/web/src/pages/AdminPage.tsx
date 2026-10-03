@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { events } from '@/data/events';
+import { isValidEmail } from '@/lib/utils';
 
 type Submission = {
   id: string;
@@ -7,8 +8,6 @@ type Submission = {
   data: {
     name: string;
     email: string;
-    phone?: string;
-    instagram?: string;
     howDidYouHear?: string;
     musicNote?: string;
     recordingConsent?: string;
@@ -183,17 +182,15 @@ export function AdminPage() {
                 {/* Name + contact */}
                 <div>
                   <p className="font-sans font-medium text-[#F2E0C0]">{s.data.name}</p>
-                  <a
-                    href={`mailto:${s.data.email}`}
-                    className="font-mono text-xs text-[#8A6040] hover:text-[#C4712A] transition-colors"
-                  >
-                    {s.data.email}
-                  </a>
-                  {s.data.phone && (
-                    <p className="font-mono text-xs text-[#8A6040] mt-0.5">{s.data.phone}</p>
-                  )}
-                  {s.data.instagram && (
-                    <p className="font-mono text-xs text-[#8A6040] mt-0.5">{s.data.instagram}</p>
+                  {isValidEmail(s.data.email) ? (
+                    <a
+                      href={`mailto:${s.data.email}`}
+                      className="font-mono text-xs text-[#8A6040] hover:text-[#C4712A] transition-colors"
+                    >
+                      {s.data.email}
+                    </a>
+                  ) : (
+                    <span className="font-mono text-xs text-[#C4412A]">[invalid email]</span>
                   )}
                 </div>
 

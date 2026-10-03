@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { Event } from '@/data/events';
+import { sanitizeText } from '@/lib/utils';
 
 function encode(fields: Record<string, string>) {
   return Object.entries(fields)
@@ -25,8 +26,8 @@ export function NotifyForm({ event }: { event: Event }) {
           'form-name': 'notify-me',
           'event-id': event.id,
           'event-title': event.title,
-          name,
-          email,
+          name: sanitizeText(name),
+          email: sanitizeText(email),
         }),
       });
       setState('success');
@@ -61,6 +62,7 @@ export function NotifyForm({ event }: { event: Event }) {
           required
           type="text"
           placeholder="Your name"
+          maxLength={100}
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="w-full border border-[#3D1F0A]/20 bg-transparent px-3 py-2.5 font-sans text-sm text-[#1A0C04] placeholder-[#8A6040]/50 focus:outline-none focus:border-[#C4712A] transition-colors"
@@ -69,6 +71,7 @@ export function NotifyForm({ event }: { event: Event }) {
           required
           type="email"
           placeholder="Email address"
+          maxLength={254}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full border border-[#3D1F0A]/20 bg-transparent px-3 py-2.5 font-sans text-sm text-[#1A0C04] placeholder-[#8A6040]/50 focus:outline-none focus:border-[#C4712A] transition-colors"

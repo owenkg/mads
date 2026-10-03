@@ -44,12 +44,10 @@ export function AboutPage() {
         <p className="font-mono text-xs tracking-widest uppercase text-[#8A6040]">
           Questions & collaborations
         </p>
-        <a
-          href="mailto:hello@meridianatdusk.com"
-          className="font-serif italic text-xl text-[#C4412A] hover:text-[#C4712A] transition-colors mt-2 block"
-        >
-          hello@meridianatdusk.com
-        </a>
+        {/* hello@meridianatdusk.com — domain acquisition in progress */}
+        <p className="font-serif italic text-xl text-[#8A6040] mt-2">
+          DM us on Instagram
+        </p>
       </div>
     </div>
   );
