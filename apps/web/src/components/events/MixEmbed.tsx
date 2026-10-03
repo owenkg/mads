@@ -30,9 +30,8 @@ function getYouTubeEmbedUrl(url: string) {
 }
 
 function getMixcloudEmbedUrl(url: string) {
-  // https://www.mixcloud.com/username/trackname/
-  const path = url.replace('https://www.mixcloud.com', '').replace(/\/$/, '');
-  return `https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=${encodeURIComponent(path)}`;
+  const path = url.replace('https://www.mixcloud.com', '').replace(/\/?$/, '/');
+  return `https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=${encodeURIComponent(path)}`;
 }
 
 function getSoundcloudEmbedUrl(url: string) {

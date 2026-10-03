@@ -65,7 +65,7 @@ export const events: Event[] = [
           },
           {
             platform: 'mixcloud',
-            url: 'https://www.mixcloud.com/owenkg/',
+            url: 'https://www.mixcloud.com/CHIVOUMBIE/',
             label: 'Mixcloud Profile',
           },
         ],

@@ -7,8 +7,6 @@ type FormState = 'idle' | 'submitting' | 'success' | 'error';
 type FormData = {
   name: string;
   email: string;
-  phone: string;
-  instagram: string;
   howDidYouHear: string;
   musicNote: string;
   recordingConsent: boolean;
@@ -17,8 +15,6 @@ type FormData = {
 const initialData: FormData = {
   name: '',
   email: '',
-  phone: '',
-  instagram: '',
   howDidYouHear: '',
   musicNote: '',
   recordingConsent: false,
@@ -52,8 +48,6 @@ export function RSVPForm({ event }: { event: Event }) {
           'event-rsvp-deadline': event.rsvpDeadline ?? '',
           name: data.name,
           email: data.email,
-          phone: data.phone,
-          instagram: data.instagram,
           howDidYouHear: data.howDidYouHear,
           musicNote: data.musicNote,
           recordingConsent: data.recordingConsent ? 'yes' : 'no',
@@ -119,12 +113,12 @@ export function RSVPForm({ event }: { event: Event }) {
       {/* Name */}
       <div>
         <label className="block font-mono text-xs tracking-widest uppercase text-[#8A6040] mb-2">
-          Full Name <span className="text-[#C4412A]">*</span>
+          Name <span className="text-[#C4412A]">*</span>
         </label>
         <input
           required
           type="text"
-          placeholder="As it appears on ID"
+          placeholder="Your name"
           value={data.name}
           onChange={(e) => update('name', e.target.value)}
           className="w-full border border-[#3D1F0A]/20 bg-transparent px-4 py-3 font-sans text-[#1A0C04] placeholder-[#8A6040]/50 focus:outline-none focus:border-[#C4712A] transition-colors"
@@ -142,34 +136,6 @@ export function RSVPForm({ event }: { event: Event }) {
           placeholder="you@example.com"
           value={data.email}
           onChange={(e) => update('email', e.target.value)}
-          className="w-full border border-[#3D1F0A]/20 bg-transparent px-4 py-3 font-sans text-[#1A0C04] placeholder-[#8A6040]/50 focus:outline-none focus:border-[#C4712A] transition-colors"
-        />
-      </div>
-
-      {/* Phone */}
-      <div>
-        <label className="block font-mono text-xs tracking-widest uppercase text-[#8A6040] mb-2">
-          Phone Number
-        </label>
-        <input
-          type="tel"
-          placeholder="+256 700 000 000"
-          value={data.phone}
-          onChange={(e) => update('phone', e.target.value)}
-          className="w-full border border-[#3D1F0A]/20 bg-transparent px-4 py-3 font-sans text-[#1A0C04] placeholder-[#8A6040]/50 focus:outline-none focus:border-[#C4712A] transition-colors"
-        />
-      </div>
-
-      {/* Instagram */}
-      <div>
-        <label className="block font-mono text-xs tracking-widest uppercase text-[#8A6040] mb-2">
-          Instagram Handle
-        </label>
-        <input
-          type="text"
-          placeholder="@yourhandle"
-          value={data.instagram}
-          onChange={(e) => update('instagram', e.target.value)}
           className="w-full border border-[#3D1F0A]/20 bg-transparent px-4 py-3 font-sans text-[#1A0C04] placeholder-[#8A6040]/50 focus:outline-none focus:border-[#C4712A] transition-colors"
         />
       </div>

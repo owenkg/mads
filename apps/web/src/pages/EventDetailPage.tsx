@@ -43,10 +43,10 @@ export function EventDetailPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#F2E0C0]" />
 
-          {/* Session stamp over image */}
-          <div className="absolute bottom-8 left-8 z-10">
+          {/* Session stamp — centred, large */}
+          <div className="absolute inset-0 flex items-center justify-center z-10">
             <span
-              className="font-mono text-sm tracking-[0.2em] uppercase border-2 border-[#D4B88A]/80 text-[#D4B88A] px-3 py-1.5 transform -rotate-1 inline-block"
+              className="font-mono text-4xl md:text-6xl tracking-[0.15em] uppercase border-4 border-[#D4B88A]/80 text-[#D4B88A] px-8 py-4 transform -rotate-1 inline-block w-[60%] text-center"
               style={{ filter: 'url(#roughness)' }}
             >
               {event.session}

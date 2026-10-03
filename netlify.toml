@@ -3,6 +3,12 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  VITE_BASE_PATH = "/"
+
+[functions]
+  directory = "../../netlify/functions"
+
 [[redirects]]
   from   = "/*"
   to     = "/index.html"
