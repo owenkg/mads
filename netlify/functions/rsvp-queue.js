@@ -14,32 +14,37 @@ export async function handler(event) {
     return { statusCode: 401, body: 'Unauthorized' };
   }
 
-  const formId = process.env.NETLIFY_FORM_ID;
+  const siteId = process.env.NETLIFY_SITE_ID;
   const token = process.env.NETLIFY_ACCESS_TOKEN;
 
-  if (!formId || !token) {
+  if (!siteId || !token) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'NETLIFY_FORM_ID and NETLIFY_ACCESS_TOKEN must be set in environment variables.' }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'NETLIFY_SITE_ID and NETLIFY_ACCESS_TOKEN must be set.' }),
     };
   }
 
+  // Fetch all submissions for the site, filtered to the rsvp form
   const res = await fetch(
-    `https://api.netlify.com/api/v1/forms/${formId}/submissions?per_page=100`,
+    `https://api.netlify.com/api/v1/sites/${siteId}/submissions?per_page=100`,
     { headers: { Authorization: `Bearer ${token}` } }
   );
 
   if (!res.ok) {
     return {
       statusCode: res.status,
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ error: `Netlify API error: ${res.status} ${res.statusText}` }),
     };
   }
 
-  const submissions = await res.json();
+  const all = await res.json();
+  const rsvps = all.filter((s) => s.form_name === 'rsvp');
+
   return {
     statusCode: 200,
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(submissions),
+    body: JSON.stringify(rsvps),
   };
 }
